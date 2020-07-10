@@ -1,81 +1,78 @@
 package it.polito.tdp.rivers.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class River {
-	private int id;
-	private String name;
-	private double flowAvg;
-	private List<Flow> flows;
 	
-	public River(int id) {
+	private int id;
+	private String nome;
+	private List<Flusso> flussi;
+	private double mediaFlussi;
+	
+	/**
+	 * @param id
+	 * @param nome
+	 */
+	public River(int id, String nome) {
+		super();
 		this.id = id;
+		this.nome = nome;
 	}
-
-	public River(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
-
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
-	public double getFlowAvg() {
-		return flowAvg;
+	/**
+	 * @return the flussi
+	 */
+	public List<Flusso> getFlussi() {
+		return flussi;
 	}
-
-	public void setFlowAvg(double flowAvg) {
-		this.flowAvg = flowAvg;
+	/**
+	 * @param flussi the flussi to set
+	 */
+	public void setFlussi(List<Flusso> flussi) {
+		this.flussi = flussi;
 	}
-
-	public void setFlows(List<Flow> flows) {
-		this.flows = flows;
+	
+	/**
+	 * @return the mediaFlussi
+	 */
+	public double getMediaFlussi() {
+		return mediaFlussi;
 	}
-
-	public List<Flow> getFlows() {
-		if (flows == null)
-			flows = new ArrayList<Flow>();
-		return flows;
+	/**
+	 * @param mediaFlussi the mediaFlussi to set
+	 */
+	public void setMediaFlussi(double mediaFlussi) {
+		this.mediaFlussi = mediaFlussi;
 	}
-
 	@Override
 	public String toString() {
-		return name;
+		return id + " " + nome;
 	}
+	
+	
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		River other = (River) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
 }
