@@ -66,7 +66,6 @@ public class FXMLController {
     @FXML
     void simula(ActionEvent event) {
     	double k = Double.parseDouble(txtK.getText());
-    	
     	this.model.Simulazione(boxRiver.getValue(), k);
     	
     	txtResult.clear();

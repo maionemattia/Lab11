@@ -11,7 +11,7 @@ public class Simulator {
 	private double fout_min;
 	private double fout;
 	private int numGiorniCritici = 0;
-	PriorityQueue<Flusso> queue;
+	PriorityQueue<Flusso> queue = new PriorityQueue<>();
 	List<Double> capacity = new ArrayList<>();
 
 	
@@ -31,18 +31,18 @@ public class Simulator {
 			if(Math.random() > 0.95) {
 				fout = 10*fout_min;
 			}
-			C+=convertM3SecToM3Day(f.getQty());
+			double fin = convertM3SecToM3Day(f.getQty());
 			
-			if(C>Q) {
-				C=Q;
-			}
-			if(C<fout) {
+			if(fin<fout_min) {
 				//Non riesco a garantire la quantità minima
 				numGiorniCritici++;
 				C=0;
 			}else {
 				//Faccio uscire la quantità giornaliera
-				C-=fout;
+				C+=(fin-fout);
+			}
+			if(C > Q) {
+				C = Q;
 			}
 			capacity.add(C);
 		}
